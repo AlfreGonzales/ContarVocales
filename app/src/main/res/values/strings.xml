@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="btn_procesar">PROCESAR</string>
+    <string name="ingresa" />
+    <string name="btn_contar">CONTAR</string>
+    <string name="ingresar_palabra">Ingresar palabra</string>
+</resources>
