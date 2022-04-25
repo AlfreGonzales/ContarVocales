@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     //Atribute
     private EditText ETPalabra;
@@ -41,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         BtnContar.setOnClickListener(view -> {
             obtenerInformacion();
-            obtenerMensaje();
+            convertirMinusculas();
+            contarVolcaless();
         });
     }
     private void inicializarVistas(){
@@ -58,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
     }
     //cuantas volcales tiene una palabra
 
+    private void convertirMinusculas(){
+        if(esMinuscula){
+            palabra = palabra.toLowerCase();
+        }
+    }
     private String contarVocales(){
         contadorVocales = 0;
         String mensaje;
@@ -68,6 +78,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return "la pablabre ingresada tiene " + contadorVocales + " vocales";
+    }
+
+    private void contarVolcaless(){
+        ArrayList<Character> vocales = new ArrayList<>(Arrays.asList('a','e','i','o','u'));
+
+        int cantidadVocales = 0;
+        for(int i = 0; i < palabra.length(); i++){
+            if(vocales.contains(palabra.charAt(i))){
+                cantidadVocales++;
+            }
+        }
+        Toast.makeText(this,"Tiene "+cantidadVocales,Toast.LENGTH_LONG).show();
     }
 
     private void obtenerMensaje(){
